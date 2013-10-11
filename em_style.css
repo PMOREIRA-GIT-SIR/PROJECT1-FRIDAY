@@ -1,3 +1,32 @@
 body {
+	background-color : yellow;
+	color: navy;
+	font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;
+}
+	
 
+ul, li{
+	display : inline-block;
+}
+
+/* li {
+	display : table-cell;
+	vertical-align: middle;
+} */
+
+li {
+	width : 40px;
+	height : 40px;
+	border-style: solid;
+	border-width: 2px;
+	border-radius: 10px;
+	background-color: lime;
+	text-align : center;
+	font-size: 25px;
+	font-weight :bold;
+}
+
+ul.stars li{
+	background-color: black;
+	color: silver;
 }
