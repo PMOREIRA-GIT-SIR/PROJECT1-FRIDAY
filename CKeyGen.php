@@ -1,6 +1,26 @@
 <?php
 
 class CKeyGen {
+	const NN 	= 5;
+	const NS 	= 2;
+	const MINN 	= 1;
+	const MAXN 	= 50;
+	const MINS 	= 1;
+	const MAXS 	= 11;
+	
+	public $knumbers;
+	public $kstars;
+	
+	public function __construct() {
+		$this->genKey();	
+	}
+	
+	public function genKey() {
+		$en = new CExtractor(CKeyGen::NN, CKeyGen::MINN, CKeyGen::MAXN);
+		$es = new CExtractor(CKeyGen::NS, CKeyGen::MINS, CKeyGen::MAXS);
+		$this->knumbers = $en->extractor();
+		$this->kstars   = $es->extractor();
+	}
 	
 }
 
