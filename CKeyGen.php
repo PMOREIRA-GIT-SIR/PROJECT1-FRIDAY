@@ -22,6 +22,40 @@ class CKeyGen {
 		$this->kstars   = $es->extractor();
 	}
 	
+	public function key2XHTML() {
+		$root = new SimpleXMLElement("<div/>");
+		
+		$root->addChild("ul");
+		$uls = $root->addChild("ul");
+		
+		$root->ul[0]->addAttribute("class","numbers");
+		foreach($this->knumbers as $number) {
+			$root->ul[0]->addChild("li",$number);
+		}
+		$uls->addAttribute("class","stars");
+		foreach($this->kstars as $star) {
+			$uls->addChild("li",$star);
+		}
+		
+		return $root->asXML();
+	}
+	public function key2XML() {
+		$root = new SimpleXMLElement("<key/>");
+		
+		$kn = $root->addChild("numbers");
+		$ks = $root->addChild("stars");
+		
+		foreach($this->knumbers as $number) {
+			$kn->addChild("num",$number);
+		}
+
+		foreach($this->kstars as $star) {
+			$ks->addChild("num",$star);
+		}
+		
+		return $root->asXML();
+;	}
+	
 }
 
 class CExtractor {
