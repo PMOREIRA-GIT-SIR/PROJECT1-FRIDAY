@@ -10,6 +10,7 @@ class CKeyGen {
 	
 	public $knumbers;
 	public $kstars;
+	private $segredo="xpto";
 	
 	public function __construct() {
 		$this->genKey();	
@@ -38,6 +39,9 @@ class CKeyGen {
 		}
 		
 		return $root->asXML();
+	}
+	public function key2JSON() {
+		return json_encode($this);
 	}
 	public function key2XML() {
 		$root = new SimpleXMLElement("<key/>");
