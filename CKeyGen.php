@@ -8,8 +8,8 @@ class CKeyGen {
 	const MINS 	= 1;
 	const MAXS 	= 11;
 	
-	public $knumbers;
-	public $kstars;
+	public $numbers;
+	public $stars;
 	private $segredo="xpto";
 	
 	public function __construct() {
@@ -19,8 +19,8 @@ class CKeyGen {
 	public function genKey() {
 		$en = new CExtractor(CKeyGen::NN, CKeyGen::MINN, CKeyGen::MAXN);
 		$es = new CExtractor(CKeyGen::NS, CKeyGen::MINS, CKeyGen::MAXS);
-		$this->knumbers = $en->extractor();
-		$this->kstars   = $es->extractor();
+		$this->numbers = $en->extractor();
+		$this->stars   = $es->extractor();
 	}
 	
 	public function key2XHTML() {
@@ -30,11 +30,11 @@ class CKeyGen {
 		$uls = $root->addChild("ul");
 		
 		$root->ul[0]->addAttribute("class","numbers");
-		foreach($this->knumbers as $number) {
+		foreach($this->numbers as $number) {
 			$root->ul[0]->addChild("li",$number);
 		}
 		$uls->addAttribute("class","stars");
-		foreach($this->kstars as $star) {
+		foreach($this->stars as $star) {
 			$uls->addChild("li",$star);
 		}
 		
@@ -49,11 +49,11 @@ class CKeyGen {
 		$kn = $root->addChild("numbers");
 		$ks = $root->addChild("stars");
 		
-		foreach($this->knumbers as $number) {
+		foreach($this->numbers as $number) {
 			$kn->addChild("num",$number);
 		}
 
-		foreach($this->kstars as $star) {
+		foreach($this->stars as $star) {
 			$ks->addChild("num",$star);
 		}
 		
