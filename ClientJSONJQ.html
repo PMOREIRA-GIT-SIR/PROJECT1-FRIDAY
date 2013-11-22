@@ -1,0 +1,48 @@
+<html>
+	<head> 
+		<title>
+		Reverse Strings by AJAX
+		</title>
+		<script src="jQuery/jquery-1.10.2.js"></script>
+		<script>
+			// script
+			
+			$(document).ready( function (){
+				// alert("ola");
+				// $("div#output").css("background-color","lime");
+				// $("#input").css("background-color","yellow");
+				
+				$("#do_reverse").click(function () {
+					//$("#output").append($("<p></p>").html("ui"));
+					//alert($("#input_str").val());
+					$.ajax(
+						{
+							url: "rev.php",
+							dataType : "text",
+							data : {
+								"the_string" : $("#input_str").val()
+							},
+							success : function (rsp) {
+								$("#output").append($("<p></p>").html(rsp));;
+							}
+						}
+					);
+				});
+			});
+			
+		</script>
+		
+	</head>
+		
+	<body>
+		<div id="input">
+			<input type="text" id="input_str" placeholder="string to reverse"/>
+			<input type="button" id="do_reverse" value="reverse"/>
+		</div>
+		<hr/>
+		<div id="output">
+			----
+		</div>
+			
+	</body>
+</html>

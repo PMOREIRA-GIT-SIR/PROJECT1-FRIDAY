@@ -1,0 +1,58 @@
+<html>
+	<head> 
+		<title>
+		Get EuroMilhoes Keys by AJAX
+		</title>
+		<link rel="stylesheet" href="em_style.css"/>
+		<script src="jQuery/jquery-1.10.2.js"></script>
+		<script>
+			// script
+			
+			$(document).ready( function (){
+				// alert("ola");
+				// $("div#output").css("background-color","lime");
+				// $("#input").css("background-color","yellow");
+				
+				$("#get_key").click(function () {
+					//$("#output").append($("<p></p>").html("ui"));
+					//alert($("#input_str").val());
+					$.ajax(
+						{
+							url: "http://alunos.estg.ipvc.pt/~pmoreira/KEYSERVER/KeyServerJSON.php",
+							dataType : "json",
+							success : function (key) {
+								var keydiv = $("<div/>");
+								var keyuln = $("<ul/>").addClass("numbers");
+								var keyuls = $("<ul/>").addClass("stars");
+								
+								keydiv.append(keyuln);
+								keydiv.append(keyuls);
+								for(var i=0; i < key.numbers.length; i++) {
+									keyuln.append($("<li/>").html(key.numbers[i]));
+								}
+								for(var i=0; i < key.stars.length; i++) {
+									keyuls.append($("<li/>").html(key.stars[i]));
+								}
+								$("#output").append(keydiv);									
+							}
+						}
+					);
+				});
+			});
+			
+		</script>
+		
+	</head>
+		
+	<body>
+		<div id="input">
+			<!--input type="text" id="input_str" placeholder="string to reverse"/-->
+			<input type="button" id="get_key" value="get a key"/>
+		</div>
+		<hr/>
+		<div id="output">
+			----
+		</div>
+			
+	</body>
+</html>
